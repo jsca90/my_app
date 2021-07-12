@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { authService } from "../../fbase";
+import { authService } from "../fbase";
 
 const Nav = () => {
   const history = useHistory();
