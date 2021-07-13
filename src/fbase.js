@@ -3,7 +3,9 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
 
-const firebaseConfig = {};
+const firebaseConfig = {
+   //비공개
+};
 
 firebase.initializeApp(firebaseConfig);
 

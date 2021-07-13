@@ -4,24 +4,34 @@ import Input from "../components/Input";
 
 const Home = () => {
   const [inputs, setInputs] = useState({
-    comCodeNum: "",
-    MoCodeNum: "",
-    CodeNum: "",
-    dept: "",
-    deptTeam: "",
-    selected: "",
-    useName: "",
-    mSize: "",
-    makeYear: ""
+    user: "",
+    department: "",
+    teamName: "",
+    locationOfUse: "",
+    monitorManufacturer: "",
+    desktopManufacturer: "",
+    yearOfMonitorManufacture: "",
+    yearOfDesktopManufacture: "",
+    monitorModelName: "",
+    desktopModelName: "",
+    monitorSize: "",
+    monitorCode: "",
+    desktopCode: ""
   });
   const {
-    codeNum,
-    dept,
-    deptTeam,
-    selected,
-    useName,
-    mSize,
-    makeYear
+    user,
+    department,
+    teamName,
+    locationOfUse,
+    monitorManufacturer,
+    desktopManufacturer,
+    yearOfMonitorManufacture,
+    yearOfDesktopManufacture,
+    monitorModelName,
+    desktopModelName,
+    monitorSize,
+    monitorCode,
+    desktopCode
   } = inputs;
   const onClick = (e) => {
     const { value, name } = e.target;
@@ -34,46 +44,54 @@ const Home = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const nweetObj = {
-      codeNum: codeNum,
-      dept: dept,
-      deptTeam: deptTeam,
-      selected: selected,
-      useName: useName,
-      mSize: mSize,
-      makeYear: makeYear,
-      createdAt: Date.now()
+    const monitorObj = {
+      user,
+      department,
+      teamName,
+      locationOfUse,
+      monitorManufacturer,
+      yearOfMonitorManufacture,
+      monitorModelName, 
+      monitorSize,
+      monitorCode,
+    };
+    const desktopObj = {
+      user,
+      department,
+      teamName,
+      locationOfUse,      
+      desktopManufacturer,     
+      yearOfDesktopManufacture,     
+      desktopModelName,     
+      desktopCode
     };
 
-    await dbService.collection("Notebook").add(nweetObj);
+    await dbService.collection("Lists").add(monitorObj);
+    await dbService.collection("Lists").add(desktopObj);
 
-    console.log(nweetObj);
+
+    
     setInputs({
-      codeNum: "",
-      dept: "",
-      deptTeam: "",
-      selected: "",
-      useName: "",
-      mSize: "",
-      makeYear: ""
+      user: "",
+      department: "",
+      teamName: "",
+      locationOfUse: "",
+      monitorManufacturer: "",
+      desktopManufacturer: "",
+      yearOfMonitorManufacture: "",
+      yearOfDesktopManufacture: "",
+      monitorModelName: "",
+      desktopModelName: "",
+      monitorSize: "",
+      monitorCode: "",
+      desktopCode: ""
     });
   };
 
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <select name="selected" onChange={onClick} value={selected}>
-          <option value="">분류</option>
-          <option value="노트북" name="notebook">
-            노트북
-          </option>
-        </select>
-        {selected === "" ? (
-          <Input onClick={onClick} inputs={inputs} />
-        ) : (
-          <h1>asdasd</h1>
-        )}
-
+        <Input onClick={onClick} inputs={inputs} />
         <input type="submit" value="보내기" />
       </form>
     </div>
