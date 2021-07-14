@@ -4,19 +4,19 @@ import Input from "../components/Input";
 
 const Home = () => {
   const [inputs, setInputs] = useState({
-    user: "",
-    department: "",
-    teamName: "",
-    locationOfUse: "",
-    monitorManufacturer: "",
-    desktopManufacturer: "",
-    yearOfMonitorManufacture: "",
-    yearOfDesktopManufacture: "",
-    monitorModelName: "",
-    desktopModelName: "",
-    monitorSize: "",
-    monitorCode: "",
-    desktopCode: ""
+    user: "", // 사용자
+    department: "", // 부서명
+    teamName: "", // 팀명
+    locationOfUse: "", // 사용위치
+    monitorManufacturer: "", // 모니터 제조사
+    desktopManufacturer: "", // 데스크탑 제조사
+    yearOfMonitorManufacture: "", // 모니터 제조년월
+    yearOfDesktopManufacture: "", // 데스크탑 제조년월
+    monitorModelName: "", // 모니터 모델명
+    desktopModelName: "", // 데스크탑 모델명
+    monitorSize: "", // 모니터 사이즈
+    monitorCode: "", // 모니터 코드명
+    desktopCode: "" // 데스크탑 코드명
   });
   const {
     user,
