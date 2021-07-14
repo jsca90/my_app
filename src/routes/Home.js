@@ -60,10 +60,11 @@ const Home = () => {
       department,
       teamName,
       locationOfUse,      
-      desktopManufacturer,     
-      yearOfDesktopManufacture,     
-      desktopModelName,     
-      desktopCode
+      monitorManufacturer,     
+      yearOfMonitorManufacture,     
+      monitorModelName,     
+      monitorCode,
+      monitorSize
     };
 
     await dbService.collection("Lists").add(monitorObj);

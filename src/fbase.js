@@ -5,6 +5,7 @@ import "firebase/storage";
 
 const firebaseConfig = {
    //비공개
+   //
 };
 
 firebase.initializeApp(firebaseConfig);

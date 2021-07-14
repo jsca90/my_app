@@ -7,11 +7,11 @@ const Lists = () => {
         dbService
             .collection("Lists")
             .onSnapshot((snapshot) => {
-                const nweetArray = snapshot.docs.map((doc) => ({
+                const data = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
                 }));
-                setLists(nweetArray);
+                setLists(data);
             });
     }, []);
     return (<>
