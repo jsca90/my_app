@@ -6,6 +6,7 @@ import "firebase/storage";
 const firebaseConfig = {
    //비공개
    //각자 firebase
+   //변경
 };
 
 firebase.initializeApp(firebaseConfig);
