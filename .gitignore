@@ -23,6 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/fbase.js
-fbase.js
+.src/fbase.js
+src/fbase.js
+
 
 .env
