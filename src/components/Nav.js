@@ -9,7 +9,7 @@ const Nav = () => {
     history.push("/");
   };
   return (<><button onClick={onLogOut}>로그아웃</button>
-  <Link to="/Lists"><button>리스트</button></Link></>);
+    <Link to="/Lists"><button>리스트</button></Link></>);
 };
 
 export default Nav;

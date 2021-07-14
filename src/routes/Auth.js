@@ -4,7 +4,6 @@ import { authService, firebaseInstance } from "../fbase";
 const Auth = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
-  const [count, setCount] = useState(0);
 
   const onChange = (e) => {
     const {
@@ -29,9 +28,7 @@ const Auth = () => {
         .catch((error) => {
           var errorCode = error.code;
           var errorMessage = error.message;
-          setCount(count + 1);
-          console.log(count);
-          alert(errorCode, errorMessage, count);
+          alert(errorCode, errorMessage);
         });
     } catch (error) {
       alert(error);

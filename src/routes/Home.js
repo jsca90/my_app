@@ -43,7 +43,6 @@ const Home = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     
     const desktopObj = {
       user,
@@ -70,8 +69,6 @@ const Home = () => {
     await dbService.collection("Lists").add(monitorObj);
     await dbService.collection("Lists").add(desktopObj);
 
-
-    
     setInputs({
       user: "",
       department: "",
@@ -92,7 +89,8 @@ const Home = () => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <Input onClick={onClick} inputs={inputs} />
+        {select ? ( <Input onClick={onClick} inputs={inputs} />) : (<InputNotebook />)}
+       
         <input type="submit" value="보내기" />
       </form>
     </div>
