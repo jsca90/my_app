@@ -35,11 +35,11 @@ const Auth = () => {
     }
   };
   return (
-    <div>
-      <form onSubmit={onSubmit} method="post">
-        <input type="text" name="id" onChange={onChange} value={id} />
-        <input type="password" name="pw" onChange={onChange} value={pw} />
-        <input type="submit" value="Sign in" />
+    <div className="container">
+      <form onSubmit={onSubmit} method="post" >
+        <input type="text" name="id" onChange={onChange} value={id}  className="authInput"/>
+        <input type="password" name="pw" onChange={onChange} value={pw}  className="authInput"/>
+        <input type="submit" value="Sign in" className="authInput authSubmit"/>
       </form>
     </div>
   );

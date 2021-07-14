@@ -8,8 +8,36 @@ const Nav = () => {
     authService.signOut();
     history.push("/");
   };
-  return (<><button onClick={onLogOut}>로그아웃</button>
-    <Link to="/Lists"><button>리스트</button></Link></>);
+  return (
+  <nav>
+    <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
+      <li>
+        <Link to="/" style={{ marginRight: 10 }}>
+          메인으로
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="/Lists"
+          style={{
+            marginLeft: 10,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontSize: 12,
+          }}
+        >
+         리스트
+        </Link>
+      </li>
+    </ul>
+  </nav>
+  
+  
+  
+  
+
+    );
 };
 
 export default Nav;

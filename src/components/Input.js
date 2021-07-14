@@ -1,4 +1,4 @@
-const Input = ({ onClick, inputs }) => {
+const Input = ({ onToggle, inputs }) => {
   const {
       
       department,
@@ -21,91 +21,91 @@ const Input = ({ onClick, inputs }) => {
         type="text"
         placeholder="부서명"
         name="department"
-        onChange={onClick}
+        onChange={onToggle}
         value={department}
       />
       <input
         type="text"
         placeholder="팀명"
         name="teamName"
-        onChange={onClick}
+        onChange={onToggle}
         value={teamName}
       />
       <input
         type="text"
         placeholder="사용위치"
         name="locationOfUse"
-        onChange={onClick}
+        onChange={onToggle}
         value={locationOfUse}
       />
       <input
         type="text"
         placeholder="데스크탑제조사"
         name="desktopManufacturer"
-        onChange={onClick}
+        onChange={onToggle}
         value={desktopManufacturer}
       />
       <input
         type="text"
         placeholder="데스크탑모델명"
         name="desktopModelName"
-        onChange={onClick}
+        onChange={onToggle}
         value={desktopModelName}
       />
       <input
         type="text"
         placeholder="데스크탑제조년월"
         name="yearOfDesktopManufacture"
-        onChange={onClick}
+        onChange={onToggle}
         value={yearOfDesktopManufacture}
       />
       <input
         type="text"
         placeholder="데스크탑코드명"
         name="desktopCode"
-        onChange={onClick}
+        onChange={onToggle}
         value={desktopCode}
       />
       <input
         type="text"
         placeholder="모니터제조사"
         name="monitorManufacturer"
-        onChange={onClick}
+        onChange={onToggle}
         value={monitorManufacturer}
       />
       <input
         type="text"
         placeholder="모니터모델명"
         name="monitorModelName"
-        onChange={onClick}
+        onChange={onToggle}
         value={monitorModelName}
       />
       <input
         type="text"
         placeholder="모니터제조년월"
         name="yearOfMonitorManufacture"
-        onChange={onClick}
+        onChange={onToggle}
         value={yearOfMonitorManufacture}
       />
       <input
         type="text"
         placeholder="모니터코드명"
         name="monitorCode"
-        onChange={onClick}
+        onChange={onToggle}
         value={monitorCode}
       />
       <input
         type="text"
         placeholder="모니터사이즈"
         name="monitorSize"
-        onChange={onClick}
+        onChange={onToggle}
         value={monitorSize}
       />
       <input
         type="text"
         placeholder="사용자명"
         name="user"
-        onChange={onClick}
+        onChange={onToggle}
         value={user}
       />
     </>
