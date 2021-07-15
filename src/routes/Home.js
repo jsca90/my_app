@@ -91,10 +91,11 @@ const Home = () => {
     };
 
     return (
-        <div className="container">
-            <form onSubmit={onSubmit}>
+        
+            <form onSubmit={onSubmit} className="factoryForm">
                
-                <select onChange={onToggle} value={kind} name="kind">
+               
+                <select onChange={onToggle} value={kind} name="kind" className="factoryInput__select ">
                     <option value="">분류</option>
                     <option value="NoteBook">노트북</option>
                 </select>
@@ -102,9 +103,10 @@ const Home = () => {
                 {kind ==="" ? (<Input onToggle={onToggle} inputs={inputs} />) : (<InputNotebook />)}
 
 
-                <input type="submit" value="보내기" />
+                <input type="submit" value="보내기"   className="factoryInput__arrow"/>
+                
             </form>
-        </div>
+        
     );
 };
 

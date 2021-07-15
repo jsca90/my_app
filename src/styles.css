@@ -109,22 +109,37 @@ form {
   flex-grow: 1;
   height: 40px;
   padding: 0px 20px;
-  color: white;
+  background-color: white;
   border: 1px solid #04aaff;
-  border-radius: 20px;
+  border-radius: 10px;
   font-weight: 500;
   font-size: 12px;
+  margin: 2px 2px;
+  
+}
+.factoryInput__select {
+  flex-grow: 1;
+  width: 187px;
+  height: 40px;
+  padding: 0px 20px;
+  color:black;
+  border: 1px solid #04aaff;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  margin: 2px 2px;
+    
 }
 
 .factoryInput__arrow {
-  position: absolute;
+  /* position: absolute; */
   right: 0;
   background-color: #04aaff;
   height: 40px;
-  width: 40px;
+  width: 187px;
   padding: 10px 0px;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 10px;
   color: white;
   box-sizing: border-box;
 }

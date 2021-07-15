@@ -23,6 +23,7 @@ const Input = ({ onToggle, inputs }) => {
         name="department"
         onChange={onToggle}
         value={department}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -30,6 +31,7 @@ const Input = ({ onToggle, inputs }) => {
         name="teamName"
         onChange={onToggle}
         value={teamName}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -37,6 +39,7 @@ const Input = ({ onToggle, inputs }) => {
         name="locationOfUse"
         onChange={onToggle}
         value={locationOfUse}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -44,6 +47,7 @@ const Input = ({ onToggle, inputs }) => {
         name="desktopManufacturer"
         onChange={onToggle}
         value={desktopManufacturer}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -51,6 +55,7 @@ const Input = ({ onToggle, inputs }) => {
         name="desktopModelName"
         onChange={onToggle}
         value={desktopModelName}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -58,6 +63,7 @@ const Input = ({ onToggle, inputs }) => {
         name="yearOfDesktopManufacture"
         onChange={onToggle}
         value={yearOfDesktopManufacture}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -65,6 +71,7 @@ const Input = ({ onToggle, inputs }) => {
         name="desktopCode"
         onChange={onToggle}
         value={desktopCode}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -72,6 +79,7 @@ const Input = ({ onToggle, inputs }) => {
         name="monitorManufacturer"
         onChange={onToggle}
         value={monitorManufacturer}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -79,6 +87,7 @@ const Input = ({ onToggle, inputs }) => {
         name="monitorModelName"
         onChange={onToggle}
         value={monitorModelName}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -86,6 +95,7 @@ const Input = ({ onToggle, inputs }) => {
         name="yearOfMonitorManufacture"
         onChange={onToggle}
         value={yearOfMonitorManufacture}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -93,6 +103,7 @@ const Input = ({ onToggle, inputs }) => {
         name="monitorCode"
         onChange={onToggle}
         value={monitorCode}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -100,6 +111,7 @@ const Input = ({ onToggle, inputs }) => {
         name="monitorSize"
         onChange={onToggle}
         value={monitorSize}
+        className="factoryInput__input"
       />
       <input
         type="text"
@@ -107,6 +119,7 @@ const Input = ({ onToggle, inputs }) => {
         name="user"
         onChange={onToggle}
         value={user}
+        className="factoryInput__input"
       />
     </>
   );
