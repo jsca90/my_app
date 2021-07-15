@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { dbService } from "../fbase";
 import Input from "../components/Input";
 import InputNotebook from "../components/InputNotebook";

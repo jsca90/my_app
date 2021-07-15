@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
-import Nav from "./Nav";
 import Lists from "../routes/Lists";
+import Nav from "./Nav";
 
 const AppRouter = ({ isLoggedIn }) => {
     return (
