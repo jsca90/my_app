@@ -115,7 +115,7 @@ form {
   font-weight: 500;
   font-size: 12px;
   margin: 2px 2px;
-  
+  color: black;
 }
 .factoryInput__select {
   flex-grow: 1;
