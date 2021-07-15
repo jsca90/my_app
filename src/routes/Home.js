@@ -19,6 +19,10 @@ const Home = () => {
         monitorCode: "", // 모니터 코드명
         desktopCode: "", // 데스크탑 코드명
         kind: "", // 종류
+        notebookManufacturer : "", //노트북 제조사
+        yearOfNotebookManufacture : "", //노트북 제조년월
+        NotebookModelName : "", // 노트북 모델명
+        NotebookCode: "" , // 노트묵 코드명
     });
     const {
         user,
@@ -35,7 +39,12 @@ const Home = () => {
         monitorCode,
         desktopCode,
         kind,
+        notebookManufacturer,
+        yearOfNotebookManufacture,
+        NotebookModelName,
+        NotebookCode
     } = inputs;
+
     const onToggle = (e) => {
         const { value, name } = e.target;
         setInputs({
@@ -46,6 +55,7 @@ const Home = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        
 
         const desktopObj = {
             user,
@@ -68,10 +78,25 @@ const Home = () => {
             monitorCode,
             monitorSize,
         };
+        const notebookObj = {
+            user,
+            department,
+            teamName,
+            locationOfUse,
+            notebookManufacturer,
+            yearOfNotebookManufacture,
+            NotebookModelName,
+            NotebookCode
+        };
 
-        // await dbService.collection("Lists").add(monitorObj);
-        // await dbService.collection("Lists").add(desktopObj);
-        console.log(kind);
+        if (kind==="NoteBook"){
+            await dbService.collection("Lists").add(notebookObj);
+        } else {
+            await dbService.collection("Lists").add(monitorObj);
+            await dbService.collection("Lists").add(desktopObj);
+        }
+       
+
         setInputs({
             user: "",
             department: "",
@@ -87,6 +112,10 @@ const Home = () => {
             monitorCode: "",
             desktopCode: "",
             kind: "",
+            notebookManufacturer: "",
+            yearOfNotebookManufacture: "",
+            NotebookModelName: "",
+            NotebookCode: ""
         });
     };
 
@@ -100,7 +129,7 @@ const Home = () => {
                     <option value="NoteBook">노트북</option>
                 </select>
                 
-                {kind ==="" ? (<Input onToggle={onToggle} inputs={inputs} />) : (<InputNotebook />)}
+                {kind ==="" ? (<Input onToggle={onToggle} inputs={inputs} />) : (<InputNotebook onToggle={onToggle} inputs={inputs}/>)}
 
 
                 <input type="submit" value="보내기"   className="factoryInput__arrow"/>

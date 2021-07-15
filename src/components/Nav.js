@@ -12,8 +12,8 @@ const Nav = () => {
   <nav>
     <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
       <li>
-        <Link to="/" style={{ marginRight: 10 }}>
-          메인으로
+        <Link to="/" style={{ marginRight: 10 }} onClick={onLogOut}>
+          로그아웃
         </Link>
       </li>
       <li>

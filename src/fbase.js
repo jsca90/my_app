@@ -4,7 +4,7 @@ import "firebase/firestore";
 import "firebase/storage";
 
 const firebaseConfig = {
-  
+    
    
 };
 

@@ -8,7 +8,7 @@ const AppRouter = ({ isLoggedIn }) => {
     return (
         <Router>
             {isLoggedIn && <Nav />}
-            <Switch>
+            <Switch><>
                 {isLoggedIn ? (
                     <div
                         style={{
@@ -32,7 +32,7 @@ const AppRouter = ({ isLoggedIn }) => {
                             <Auth />
                         </Route>
                     </>
-                )}
+                )}</>
             </Switch>
         </Router>
     );

@@ -86,6 +86,14 @@ form {
   margin-top: 50px;
 }
 
+.authForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
 /* Nwitter Factory */
 
 .factoryForm {

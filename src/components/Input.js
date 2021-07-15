@@ -1,6 +1,5 @@
 const Input = ({ onToggle, inputs }) => {
-  const {
-      
+  const { 
       department,
       teamName,
       locationOfUse,
