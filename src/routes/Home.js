@@ -52,7 +52,7 @@ const Home = () => {
             [name]: value, // name 키를 가진 값을 value 로 설정
         });
     };
-
+    
     const onSubmit = async (e) => {
         e.preventDefault();
         
@@ -125,17 +125,12 @@ const Home = () => {
     return (
         
             <form onSubmit={onSubmit} className="factoryForm">
-               
-               
                 <select onChange={onToggle} value={kind} name="kind" className="factoryInput__select ">
                     <option value="">분류</option>
                     <option value="NoteBook">노트북</option>
                 </select>
-                
                 {kind ==="" ? (<Input onToggle={onToggle} inputs={inputs} />) : (<InputNotebook onToggle={onToggle} inputs={inputs}/>)}
-
-
-                <input type="submit" value="보내기"   className="factoryInput__arrow"/>
+                <input type="submit" value="보내기" className="factoryInput__arrow"/>
                 
             </form>
         
