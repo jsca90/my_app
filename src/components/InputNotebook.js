@@ -18,6 +18,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                 onChange={onToggle}
                 value={department}
                 className="factoryInput__input"
+                required
             />
             <input
                 type="text"
@@ -26,6 +27,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                 onChange={onToggle}
                 value={teamName}
                 className="factoryInput__input"
+                required
             />
             <input
                 type="text"
@@ -34,6 +36,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                 onChange={onToggle}
                 value={locationOfUse}
                 className="factoryInput__input"
+                required
             />
             <input
                 type="text"
@@ -42,6 +45,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                 onChange={onToggle}
                 value={notebookManufacturer}
                 className="factoryInput__input"
+                required
             />
             <input
                 type="text"
@@ -50,6 +54,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                 onChange={onToggle}
                 value={NotebookModelName}
                 className="factoryInput__input"
+                required
             />
             <input
                 type="text"
@@ -58,6 +63,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                 onChange={onToggle}
                 value={yearOfNotebookManufacture}
                 className="factoryInput__input"
+                required
             />
             <input
                 type="text"
@@ -66,6 +72,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                 onChange={onToggle}
                 value={NotebookCode}
                 className="factoryInput__input"
+                required
             />
             <input
                 type="text"
@@ -74,6 +81,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                 onChange={onToggle}
                 value={user}
                 className="factoryInput__input"
+                required
             />
         </>
     );

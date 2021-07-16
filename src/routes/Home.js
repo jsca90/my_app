@@ -58,6 +58,7 @@ const Home = () => {
         
 
         const desktopObj = {
+            kind:"데스크탑",
             user,
             department,
             teamName,
@@ -68,6 +69,7 @@ const Home = () => {
             desktopCode,
         };
         const monitorObj = {
+            kind:"모니터",
             user,
             department,
             teamName,
@@ -79,6 +81,7 @@ const Home = () => {
             monitorSize,
         };
         const notebookObj = {
+            kind,
             user,
             department,
             teamName,
