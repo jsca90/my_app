@@ -26,24 +26,7 @@ const Input = ({ onToggle, inputs }) => {
         <option value="NoteBook">교통환경부</option>
         <option value="NoteBook">감사팀</option>
       </select>
-      {/* <input
-        type="text"
-        placeholder="부서명"
-        name="department"
-        onChange={onToggle}
-        value={department}
-        className="factoryInput__input"
-        required
-      /> */}
-      {/* <input
-        type="text"
-        placeholder="팀명"
-        name="teamName"
-        onChange={onToggle}
-        value={teamName}
-        className="factoryInput__input"
-        required
-      /> */}
+     
       <select onChange={onToggle} value={teamName} name="teamName" className="factoryInput__select ">
         <option value="">팀명</option>
         <option value="NoteBook">기획안전부</option>
