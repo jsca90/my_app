@@ -18,18 +18,15 @@ const Auth = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await authService
-        .setPersistence(firebaseInstance.auth.Auth.Persistence.SESSION)
-        .then(() => {
-          setId("");
-          setPw("");
-          return authService.signInWithEmailAndPassword(id + "@cfmc.or.kr", pw);
-        })
-        .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          alert(errorCode, errorMessage);
-        });
+      // await authService
+      //   .setPersistence(firebaseInstance.auth.Auth.Persistence.SESSION)
+      //   .then(() => {
+      //     setId("");
+      //     setPw("");
+      //     return authService.signInWithEmailAndPassword(id + "@cfmc.or.kr", pw);
+        await authService.signInWithEmailAndPassword(id + "@cfmc.or.kr", pw);
+        setId("");
+        setPw("");
     } catch (error) {
       alert(error);
     }

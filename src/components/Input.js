@@ -16,7 +16,17 @@ const Input = ({ onToggle, inputs }) => {
   } = inputs;
   return (
     <>
-      <input
+      <select onChange={onToggle} value={department} name="department" className="factoryInput__select ">
+        <option value="">부서명</option>
+        <option value="NoteBook">기획안전부</option>
+        <option value="NoteBook">경영지원부</option>
+        <option value="NoteBook">문화체육부</option>
+        <option value="NoteBook">생활체육부</option>
+        <option value="NoteBook">공원운영부</option>
+        <option value="NoteBook">교통환경부</option>
+        <option value="NoteBook">감사팀</option>
+      </select>
+      {/* <input
         type="text"
         placeholder="부서명"
         name="department"
@@ -24,8 +34,8 @@ const Input = ({ onToggle, inputs }) => {
         value={department}
         className="factoryInput__input"
         required
-      />
-      <input
+      /> */}
+      {/* <input
         type="text"
         placeholder="팀명"
         name="teamName"
@@ -33,7 +43,18 @@ const Input = ({ onToggle, inputs }) => {
         value={teamName}
         className="factoryInput__input"
         required
-      />
+      /> */}
+      <select onChange={onToggle} value={teamName} name="teamName" className="factoryInput__select ">
+        <option value="">팀명</option>
+        <option value="NoteBook">기획안전부</option>
+        <option value="NoteBook">경영지원부</option>
+        <option value="NoteBook">문화체육부</option>
+        <option value="NoteBook">생활체육부</option>
+        <option value="NoteBook">공원운영부</option>
+        <option value="NoteBook">교통환경부</option>
+        <option value="NoteBook">감사팀</option>
+      </select>
+
       <input
         type="text"
         placeholder="사용위치"

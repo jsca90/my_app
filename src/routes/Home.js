@@ -63,10 +63,10 @@ const Home = () => {
             department,
             teamName,
             locationOfUse,
-            desktopManufacturer,
+            desktopManufacturer:desktopManufacturer.toUpperCase(),
             yearOfDesktopManufacture,
             desktopModelName,
-            desktopCode,
+            desktopCode:desktopCode.toUpperCase(),
         };
         const monitorObj = {
             kind:"모니터",
@@ -76,8 +76,8 @@ const Home = () => {
             locationOfUse,
             monitorManufacturer,
             yearOfMonitorManufacture,
-            monitorModelName,
-            monitorCode,
+            monitorModelName :monitorModelName.toUpperCase(),
+            monitorCode :monitorCode.toUpperCase(),
             monitorSize,
         };
         const notebookObj = {
@@ -88,8 +88,8 @@ const Home = () => {
             locationOfUse,
             notebookManufacturer,
             yearOfNotebookManufacture,
-            NotebookModelName,
-            NotebookCode
+            NotebookModelName :NotebookModelName.toUpperCase() ,
+            NotebookCode : NotebookCode.toUpperCase(),
         };
 
         if (kind==="NoteBook"){
