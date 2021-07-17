@@ -2,13 +2,12 @@ import React, { useEffect, useState, useMemo } from "react";
 import { dbService } from "../fbase";
 import { useTable } from "react-table";
 
-import CssBaseline from '@material-ui/core/CssBaseline'
-import MaUTable from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-
+import CssBaseline from "@material-ui/core/CssBaseline";
+import MaUTable from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 
 const useData = () => {
     const [items, setItems] = useState([]);
@@ -23,18 +22,14 @@ const useData = () => {
         });
         return () => {
             setItems("");
-        }
+        };
     }, []);
 
-
-    return items
-}
-
+    return items;
+};
 
 const Lists = () => {
     const items = useData();
-
-
     const data = useMemo(
         () =>
             items.map((item) => ({
@@ -46,8 +41,9 @@ const Lists = () => {
                 Manufacturer: item.Manufacturer,
                 yearOfManufacture: item.yearOfManufacture,
                 ModelName: item.ModelName,
-                Code: item.Code
-            })), [items]
+                Code: item.Code,
+            })),
+        [items]
     );
     const columns = useMemo(
         () => [
@@ -87,12 +83,9 @@ const Lists = () => {
                 accessor: "Code",
                 Header: "코드명",
             },
-
-
         ],
         []
     );
-
 
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
         useTable({
@@ -103,12 +96,15 @@ const Lists = () => {
     return (
         <div>
             <CssBaseline />
-            <MaUTable {...getTableProps()} >
+            <MaUTable {...getTableProps()}>
                 <TableHead>
                     {headerGroups.map((headerGroup) => (
                         <TableRow {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <TableCell {...column.getHeaderProps()}> {column.render("Header")} </TableCell>
+                                <TableCell {...column.getHeaderProps()}>
+                                    {" "}
+                                    {column.render("Header")}{" "}
+                                </TableCell>
                             ))}
                         </TableRow>
                     ))}
@@ -119,13 +115,16 @@ const Lists = () => {
                         return (
                             <TableRow {...row.getRowProps()}>
                                 {row.cells.map((cell) => (
-                                    <TableCell {...cell.getCellProps()}> {cell.render("Cell")} </TableCell>
+                                    <TableCell {...cell.getCellProps()}>
+                                        {" "}
+                                        {cell.render("Cell")}{" "}
+                                    </TableCell>
                                 ))}
                             </TableRow>
                         );
                     })}
                 </TableBody>
-            </MaUTable >
+            </MaUTable>
         </div>
     );
 };
