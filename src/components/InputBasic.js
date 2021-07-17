@@ -4,6 +4,8 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
+
+
 const useStyles = makeStyles((theme) => ({
     formControl: {
         // margin: theme.spacing(1),
@@ -28,17 +30,24 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
 }));
-const InputNotebook = ({ onToggle, inputs }) => {
+
+
+const InputBasic = ({ onToggle, inputs }) => {
     const classes = useStyles();
     const {
-        user,
         department,
         teamName,
         locationOfUse,
-        notebookManufacturer,
-        yearOfNotebookManufacture,
-        NotebookModelName,
-        NotebookCode,
+        monitorManufacturer,
+        desktopManufacturer,
+        yearOfMonitorManufacture,
+        yearOfDesktopManufacture,
+        monitorModelName,
+        desktopModelName,
+        monitorSize,
+        monitorCode,
+        desktopCode,
+        user,
     } = inputs;
     return (
         <>
@@ -91,11 +100,68 @@ const InputNotebook = ({ onToggle, inputs }) => {
                 />
             </FormControl>
             <FormControl className={classes.formControl}>
-                <InputLabel >노트북 제조사</InputLabel>
+                <InputLabel >데스크탑 제조사</InputLabel>
                 <Select
-                    value={notebookManufacturer}
+                    value={desktopManufacturer}
                     onChange={onToggle}
-                    name="notebookManufacturer"
+                    name="desktopManufacturer"
+                    fullWidth>
+                    <MenuItem value={"COMTREE"}>COMTREE</MenuItem>
+                    <MenuItem value={"티원엘에스"}>티원엘에스</MenuItem>
+                    <MenuItem value={"TG"}>TG</MenuItem>
+                    <MenuItem value={"DANAWA"}>DANAWA</MenuItem>
+                    <MenuItem value={"SAMSUNG"}>SAMSUNG</MenuItem>
+                    <MenuItem value={"꿈뜨래"}>꿈뜨래</MenuItem>
+                    <MenuItem value={"Redstone"}>Redstone</MenuItem>
+                    <MenuItem value={"Alpha"}>Alpha</MenuItem>
+                    <MenuItem value={"LG"}>LG</MenuItem>
+                </Select>
+            </FormControl>
+            <FormControl className={classes.formControl}>
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="데스크탑 모델명"
+                    name="desktopModelName"
+
+                    value={desktopModelName}
+                    onChange={onToggle}
+                />
+            </FormControl>
+            <FormControl className={classes.textControl}>
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="데스크탑 제조년월"
+                    name="yearOfDesktopManufacture"
+
+                    value={yearOfDesktopManufacture}
+                    onChange={onToggle}
+                />
+            </FormControl>
+            <FormControl className={classes.textControl}>
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="데스크탑 코드명"
+                    name="desktopCode"
+
+                    value={desktopCode}
+                    onChange={onToggle}
+                />
+            </FormControl>
+            <FormControl className={classes.formControl}>
+                <InputLabel >모니터 제조사</InputLabel>
+                <Select
+                    value={monitorManufacturer}
+                    onChange={onToggle}
+                    name="monitorManufacturer"
                     fullWidth>
                     <MenuItem value={"COMTREE"}>COMTREE</MenuItem>
                     <MenuItem value={"티원엘에스"}>티원엘에스</MenuItem>
@@ -114,9 +180,10 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     margin="normal"
                     required
                     fullWidth
-                    label="노트북 모델명"
-                    name="NotebookModelName"
-                    value={NotebookModelName}
+                    label="모니터 모델명"
+                    name="monitorModelName"
+
+                    value={monitorModelName}
                     onChange={onToggle}
                 />
             </FormControl>
@@ -126,10 +193,10 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     margin="normal"
                     required
                     fullWidth
-                    label="노트북 제조년월"
-                    name="yearOfNotebookManufacture"
+                    label="모니터 제조년월"
+                    name="yearOfMonitorManufacture"
 
-                    value={yearOfNotebookManufacture}
+                    value={yearOfMonitorManufacture}
                     onChange={onToggle}
                 />
             </FormControl>
@@ -139,14 +206,27 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     margin="normal"
                     required
                     fullWidth
-                    label="노트북 코드명"
-                    name="NotebookCode"
+                    label="모니터 코드명"
+                    name="monitorCode"
 
-                    value={NotebookCode}
+                    value={monitorCode}
                     onChange={onToggle}
                 />
             </FormControl>
+            <FormControl className={classes.formControl}>
+                <InputLabel >모니터 사이즈</InputLabel>
+                <Select
+                    value={monitorSize}
+                    onChange={onToggle}
+                    name="monitorSize"
+                    fullWidth>
+                    <MenuItem value={"20"}>20</MenuItem>
+                    <MenuItem value={"24"}>24</MenuItem>
+                    <MenuItem value={"27"}>27</MenuItem>
+                    <MenuItem value={"32"}>32</MenuItem>
 
+                </Select>
+            </FormControl>
             <FormControl className={classes.textControl}>
                 <TextField
                     variant="outlined"
@@ -155,6 +235,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     fullWidth
                     label="사용자명"
                     name="user"
+
                     value={user}
                     onChange={onToggle}
                 />
@@ -163,4 +244,4 @@ const InputNotebook = ({ onToggle, inputs }) => {
     );
 };
 
-export default InputNotebook;
+export default InputBasic;

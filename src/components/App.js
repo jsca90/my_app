@@ -6,8 +6,6 @@ const App = () => {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setisLoggedIn] = useState(false);
   useEffect(() => {
-    
-
     authService.onAuthStateChanged(function (user) {
       if (user) {
         setisLoggedIn(true);
@@ -17,6 +15,7 @@ const App = () => {
       setInit(true);
     });
   }, []);
+
   return (
     <>{init ? <AppRouter isLoggedIn={isLoggedIn} /> : "Initializing..."}</>
   );

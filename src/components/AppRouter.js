@@ -4,28 +4,22 @@ import Home from "../routes/Home";
 import Lists from "../routes/Lists";
 import Nav from "./Nav";
 
+
 const AppRouter = ({ isLoggedIn }) => {
+
     return (
         <Router>
             {isLoggedIn && <Nav />}
             <Switch><>
                 {isLoggedIn ? (
-                    <div
-                        style={{
-                            maxWidth: 890,
-                            width: "100%",
-                            margin: "0 auto",
-                            marginTop: 80,
-                            display: "flex",
-                            justifyContent: "center",
-                        }}>
+                    <>
                         <Route exact path="/">
                             <Home />
                         </Route>
-                        <Route exact path="/Lists">
+                        <Route path="/List">
                             <Lists />
                         </Route>
-                    </div>
+                    </>
                 ) : (
                     <>
                         <Route exact path="/">
