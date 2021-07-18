@@ -143,7 +143,7 @@ export default function NewListTable() {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
-    const colums = ["구분", "부서명", "팀명", "사용자", "모델명"];
+    const colums = ["구분", "코드번호", "부서명", "팀명", "사용자"];
 
     return (
         <>
@@ -169,15 +169,15 @@ export default function NewListTable() {
                             : rows
                         ).map((row) => (
                             <TableRow key={row.id}>
-                                <TableCell align="center">{row.user}</TableCell>
-                                <TableCell align="center">
-                                    {row.ModelName}
-                                </TableCell>
-                                <TableCell align="center">{row.Code}</TableCell>
                                 <TableCell align="center">{row.kind}</TableCell>
+                                <TableCell align="center">{row.Code}</TableCell>
+                                <TableCell align="center">
+                                    {row.department}
+                                </TableCell>
                                 <TableCell align="center">
                                     {row.teamName}
                                 </TableCell>
+                                <TableCell align="center">{row.user}</TableCell>
                             </TableRow>
                         ))}
 
