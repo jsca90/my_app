@@ -101,10 +101,8 @@ const Lists = () => {
                     {headerGroups.map((headerGroup) => (
                         <TableRow {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <TableCell {...column.getHeaderProps()}>
-                                    {" "}
-                                    {column.render("Header")}{" "}
-                                </TableCell>
+                                <TableCell
+                                    {...column.getHeaderProps()}></TableCell>
                             ))}
                         </TableRow>
                     ))}
@@ -116,8 +114,7 @@ const Lists = () => {
                             <TableRow {...row.getRowProps()}>
                                 {row.cells.map((cell) => (
                                     <TableCell {...cell.getCellProps()}>
-                                        {" "}
-                                        {cell.render("Cell")}{" "}
+                                        {cell.render("Cell")}
                                     </TableCell>
                                 ))}
                             </TableRow>

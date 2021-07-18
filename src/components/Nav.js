@@ -41,9 +41,14 @@ const Nav = () => {
                         Home
                     </Link>
                 </Button>
-                <Button size="medium" className={classes.toolbarLink}>
+                {/* <Button size="medium" className={classes.toolbarLink}>
                     <Link to="/List" className={classes.textLink}>
                         List
+                    </Link>
+                </Button> */}
+                <Button size="medium" className={classes.toolbarLink}>
+                    <Link to="/newList" className={classes.textLink}>
+                        NewList
                     </Link>
                 </Button>
                 <Button size="medium" className={classes.toolbarLink}>
