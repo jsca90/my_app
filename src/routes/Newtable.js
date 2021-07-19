@@ -41,7 +41,24 @@ const useData = () => {
     return items;
 };
 
+// const useData = () => {
+//     const [items, setItems] = useState([]);
 
+//     useEffect(() => {
+//         dbService.collection("Lists").onSnapshot((snapshot) => {
+//             const item = snapshot.docs.map((doc) => ({
+//                 id: doc.id,
+//                 ...doc.data(),
+//             }));
+//             setItems(item);
+//         });
+//         return () => {
+//             setItems("");
+//         };
+//     }, []);
+
+//     return items;
+// };
 
 
 const useStyles1 = makeStyles((theme) => ({
