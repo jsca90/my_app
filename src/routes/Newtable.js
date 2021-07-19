@@ -24,13 +24,15 @@ const useData = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        dbService.collection("Lists").onSnapshot((snapshot) => {
-            const item = snapshot.docs.map((doc) => ({
+        dbService.collection("Lists").orderBy('user', 'asc').get().then((res) => {
+            const item = res.docs.map((doc) => ({
                 id: doc.id,
-                ...doc.data(),
-            }));
+                ...doc.data()
+            }))
             setItems(item);
-        });
+        })
+
+
         return () => {
             setItems("");
         };
@@ -38,6 +40,9 @@ const useData = () => {
 
     return items;
 };
+
+
+
 
 const useStyles1 = makeStyles((theme) => ({
     root: {
@@ -143,7 +148,7 @@ export default function NewListTable() {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
-    const colums = ["구분", "코드번호", "부서명", "팀명", "사용자"];
+    const colums = ["구분", "코드번호", "부서명", "팀명", "제조년월", "제조사", "모델명", "사용자"];
 
     return (
         <>
@@ -163,9 +168,9 @@ export default function NewListTable() {
                     <TableBody>
                         {(rowsPerPage > 0
                             ? rows.slice(
-                                  page * rowsPerPage,
-                                  page * rowsPerPage + rowsPerPage
-                              )
+                                page * rowsPerPage,
+                                page * rowsPerPage + rowsPerPage
+                            )
                             : rows
                         ).map((row) => (
                             <TableRow key={row.id}>
@@ -177,6 +182,9 @@ export default function NewListTable() {
                                 <TableCell align="center">
                                     {row.teamName}
                                 </TableCell>
+                                <TableCell align="center">{row.yearOfManufacture}</TableCell>
+                                <TableCell align="center">{row.Manufacturer}</TableCell>
+                                <TableCell align="center">{row.ModelName}</TableCell>
                                 <TableCell align="center">{row.user}</TableCell>
                             </TableRow>
                         ))}

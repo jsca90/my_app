@@ -2,8 +2,9 @@ import { useState } from "react";
 import { dbService } from "../fbase";
 import InputBasic from "../components/InputBasic";
 import InputNotebook from "../components/InputNotebook";
-import MenuItem from '@material-ui/core/MenuItem'
-import InputLabel from '@material-ui/core/InputLabel'
+import InputMonitor from '../components/InputMonitor';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
 
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -99,7 +100,7 @@ const Home = () => {
             locationOfUse,
             Manufacturer: desktopManufacturer.toUpperCase(),
             yearOfManufacture: yearOfDesktopManufacture,
-            ModelName: desktopModelName,
+            ModelName: desktopModelName.toUpperCase(),
             Code: desktopCode.toUpperCase(),
         };
         const IpaddrObj = {
@@ -133,6 +134,8 @@ const Home = () => {
 
         if (kind === "노트북") {
             await dbService.collection("Lists").add(notebookObj);
+        } else if (kind === "모니터") {
+            await dbService.collection("Lists").add(monitorObj);
         } else {
             await dbService.collection("Lists").add(monitorObj);
             await dbService.collection("Lists").add(desktopObj);
@@ -180,10 +183,13 @@ const Home = () => {
                             fullWidth
                         >
                             <MenuItem value={""}>기본</MenuItem>
+                            <MenuItem value={"모니터"}>모니터</MenuItem>
                             <MenuItem value={"노트북"}>노트북</MenuItem>
                         </Select>
                     </FormControl>
-                    {kind === "" ? (<InputBasic onToggle={onToggle} inputs={inputs} />) : (<InputNotebook onToggle={onToggle} inputs={inputs} />)}
+                    {kind === "" ? (<InputBasic onToggle={onToggle} inputs={inputs} />) : ""}
+                    {kind === "모니터" ? (<InputMonitor onToggle={onToggle} inputs={inputs} />) : ""}
+                    {kind === "노트북" ? (<InputNotebook onToggle={onToggle} inputs={inputs} />) : ""}
 
 
                     <Button type="submit"
