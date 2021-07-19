@@ -6,10 +6,10 @@ import NewListTable from "../routes/Newtable";
 
 import Nav from "./Nav";
 
-const AppRouter = ({ isLoggedIn }) => {
+const AppRouter = ({ isLoggedIn, userObj }) => {
     return (
         <Router>
-            {isLoggedIn && <Nav />}
+            {isLoggedIn && <Nav userObj={userObj} />}
             <Switch>
                 <>
                     {isLoggedIn ? (

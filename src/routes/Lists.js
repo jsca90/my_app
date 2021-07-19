@@ -1,25 +1,42 @@
-import React, { useEffect, useState, useMemo } from "react";
-import { dbService } from "../fbase";
-import { useTable } from "react-table";
-
-import CssBaseline from "@material-ui/core/CssBaseline";
-import MaUTable from "@material-ui/core/Table";
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableFooter from "@material-ui/core/TableFooter";
+import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import IconButton from "@material-ui/core/IconButton";
+import FirstPageIcon from "@material-ui/icons/FirstPage";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import LastPageIcon from "@material-ui/icons/LastPage";
+
+import { dbService } from "../fbase";
+
+import { useState, useEffect } from "react";
+import TableHead from "@material-ui/core/TableHead";
 
 const useData = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        dbService.collection("Lists").onSnapshot((snapshot) => {
-            const item = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
-            setItems(item);
-        });
+        dbService
+            .collection("IpLists")
+            .orderBy("user", "asc")
+            .get()
+            .then((res) => {
+                const item = res.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+                setItems(item);
+            });
+        console.log("렌더링 되었습니다.");
+
         return () => {
             setItems("");
         };
@@ -28,102 +45,199 @@ const useData = () => {
     return items;
 };
 
-const Lists = () => {
-    const items = useData();
-    const data = useMemo(
-        () =>
-            items.map((item) => ({
-                user: item.user,
-                teamName: item.teamName,
-                department: item.department,
-                kind: item.kind,
-                locationOfUse: item.locationOfUse,
-                Manufacturer: item.Manufacturer,
-                yearOfManufacture: item.yearOfManufacture,
-                ModelName: item.ModelName,
-                Code: item.Code,
-            })),
-        [items]
-    );
-    const columns = useMemo(
-        () => [
-            {
-                accessor: "kind",
-                Header: "구분",
-            },
-            {
-                accessor: "department",
-                Header: "부서명",
-            },
-            {
-                accessor: "teamName",
-                Header: "팀명",
-            },
-            {
-                accessor: "user",
-                Header: "사용자",
-            },
-            {
-                accessor: "locationOfUse",
-                Header: "사용위치",
-            },
-            {
-                accessor: "Manufacturer",
-                Header: "제조사",
-            },
-            {
-                accessor: "yearOfManufacture",
-                Header: "제조년월",
-            },
-            {
-                accessor: "ModelName",
-                Header: "모델명",
-            },
-            {
-                accessor: "Code",
-                Header: "코드명",
-            },
-        ],
-        []
-    );
+// const useData = () => {
+//     const [items, setItems] = useState([]);
 
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-        useTable({
-            columns,
-            data,
-        });
+//     useEffect(() => {
+//         dbService.collection("Lists").onSnapshot((snapshot) => {
+//             const item = snapshot.docs.map((doc) => ({
+//                 id: doc.id,
+//                 ...doc.data(),
+//             }));
+//             setItems(item);
+//         });
+//         return () => {
+//             setItems("");
+//         };
+//     }, []);
+
+//     return items;
+// };
+
+const useStyles1 = makeStyles((theme) => ({
+    root: {
+        flexShrink: 0,
+        marginLeft: theme.spacing(2.5),
+    },
+}));
+
+function TablePaginationActions(props) {
+    const classes = useStyles1();
+    const theme = useTheme();
+    const { count, page, rowsPerPage, onPageChange } = props;
+
+    const handleFirstPageButtonClick = (event) => {
+        onPageChange(event, 0);
+    };
+
+    const handleBackButtonClick = (event) => {
+        onPageChange(event, page - 1);
+    };
+
+    const handleNextButtonClick = (event) => {
+        onPageChange(event, page + 1);
+    };
+
+    const handleLastPageButtonClick = (event) => {
+        onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+    };
 
     return (
-        <div>
-            <CssBaseline />
-            <MaUTable {...getTableProps()}>
-                <TableHead>
-                    {headerGroups.map((headerGroup) => (
-                        <TableRow {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map((column) => (
-                                <TableCell
-                                    {...column.getHeaderProps()}></TableCell>
-                            ))}
-                        </TableRow>
-                    ))}
-                </TableHead>
-                <TableBody {...getTableBodyProps()}>
-                    {rows.map((row) => {
-                        prepareRow(row);
-                        return (
-                            <TableRow {...row.getRowProps()}>
-                                {row.cells.map((cell) => (
-                                    <TableCell {...cell.getCellProps()}>
-                                        {cell.render("Cell")}
-                                    </TableCell>
-                                ))}
-                            </TableRow>
-                        );
-                    })}
-                </TableBody>
-            </MaUTable>
+        <div className={classes.root}>
+            <IconButton
+                onClick={handleFirstPageButtonClick}
+                disabled={page === 0}
+                aria-label="first page">
+                {theme.direction === "rtl" ? (
+                    <LastPageIcon />
+                ) : (
+                    <FirstPageIcon />
+                )}
+            </IconButton>
+            <IconButton
+                onClick={handleBackButtonClick}
+                disabled={page === 0}
+                aria-label="previous page">
+                {theme.direction === "rtl" ? (
+                    <KeyboardArrowRight />
+                ) : (
+                    <KeyboardArrowLeft />
+                )}
+            </IconButton>
+            <IconButton
+                onClick={handleNextButtonClick}
+                disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+                aria-label="next page">
+                {theme.direction === "rtl" ? (
+                    <KeyboardArrowLeft />
+                ) : (
+                    <KeyboardArrowRight />
+                )}
+            </IconButton>
+            <IconButton
+                onClick={handleLastPageButtonClick}
+                disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+                aria-label="last page">
+                {theme.direction === "rtl" ? (
+                    <FirstPageIcon />
+                ) : (
+                    <LastPageIcon />
+                )}
+            </IconButton>
         </div>
     );
+}
+
+TablePaginationActions.propTypes = {
+    count: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
+    page: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired,
 };
 
-export default Lists;
+const useStyles2 = makeStyles({
+    table: {
+        minWidth: 500,
+    },
+});
+
+export default function List() {
+    const rows = useData();
+    const classes = useStyles2();
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+
+    const emptyRows =
+        rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
+    const colums = ["사용위치", "사용자", "사용위치"];
+
+    return (
+        <>
+            <h1 align="center">IP 현황</h1> : <h4>{rows.length}</h4>
+            <TableContainer component={Paper}>
+                <Table
+                    className={classes.table}
+                    aria-label="custom pagination table">
+                    <TableHead>
+                        <TableRow>
+                            {colums.map((item, index) => (
+                                <TableCell key={index} align="center">
+                                    {item}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {(rowsPerPage > 0
+                            ? rows.slice(
+                                  page * rowsPerPage,
+                                  page * rowsPerPage + rowsPerPage
+                              )
+                            : rows
+                        ).map((row) => (
+                            <TableRow key={row.id}>
+                                <TableCell align="center">
+                                    {row.ipaddr}
+                                </TableCell>
+                                <TableCell align="center">{row.user}</TableCell>
+                                <TableCell align="center">
+                                    {row.locationOfUse}
+                                </TableCell>
+                            </TableRow>
+                        ))}
+
+                        {emptyRows > 0 && (
+                            <TableRow style={{ height: 53 * emptyRows }}>
+                                <TableCell colSpan={11} />
+                            </TableRow>
+                        )}
+                    </TableBody>
+                    <TableFooter>
+                        <TableRow>
+                            <TablePagination
+                                rowsPerPageOptions={[
+                                    10,
+                                    20,
+                                    30,
+                                    { label: "All", value: -1 },
+                                ]}
+                                colSpan={0}
+                                count={rows.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                SelectProps={{
+                                    inputProps: {
+                                        "aria-label": "rows per page",
+                                    },
+                                    native: true,
+                                }}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangeRowsPerPage}
+                                ActionsComponent={TablePaginationActions}
+                            />
+                        </TableRow>
+                    </TableFooter>
+                </Table>
+            </TableContainer>
+        </>
+    );
+}

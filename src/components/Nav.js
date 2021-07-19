@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Nav = () => {
+const Nav = ({ userObj }) => {
     const classes = useStyles();
     const history = useHistory();
 
@@ -33,6 +33,7 @@ const Nav = () => {
         authService.signOut();
         history.push("/");
     };
+
     return (
         <>
             <Toolbar className={classes.toolbarSecondary}>
@@ -41,11 +42,16 @@ const Nav = () => {
                         Home
                     </Link>
                 </Button>
-                {/* <Button size="medium" className={classes.toolbarLink}>
-                    <Link to="/List" className={classes.textLink}>
-                        List
-                    </Link>
-                </Button> */}
+                {userObj.email === "khs@cfmc.or.kr" ? (
+                    <Button size="medium" className={classes.toolbarLink}>
+                        <Link to="/List" className={classes.textLink}>
+                            List
+                        </Link>
+                    </Button>
+                ) : (
+                    ""
+                )}
+
                 <Button size="medium" className={classes.toolbarLink}>
                     <Link to="/newList" className={classes.textLink}>
                         NewList
