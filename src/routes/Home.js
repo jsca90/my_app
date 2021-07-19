@@ -56,6 +56,7 @@ const Home = () => {
         yearOfNotebookManufacture: "", //노트북 제조년월
         NotebookModelName: "", // 노트북 모델명
         NotebookCode: "", // 노트묵 코드명
+        ipaddr: "" //아이피 주소
     });
     const {
         user,
@@ -75,7 +76,8 @@ const Home = () => {
         notebookManufacturer,
         yearOfNotebookManufacture,
         NotebookModelName,
-        NotebookCode
+        NotebookCode,
+        ipaddr
     } = inputs;
 
     const onToggle = (e) => {
@@ -89,7 +91,6 @@ const Home = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-
         const desktopObj = {
             kind: "데스크탑",
             user,
@@ -101,6 +102,11 @@ const Home = () => {
             ModelName: desktopModelName,
             Code: desktopCode.toUpperCase(),
         };
+        const IpaddrObj = {
+            user,
+            locationOfUse,
+            ipaddr
+        }
         const monitorObj = {
             kind: "모니터",
             user,
@@ -130,6 +136,7 @@ const Home = () => {
         } else {
             await dbService.collection("Lists").add(monitorObj);
             await dbService.collection("Lists").add(desktopObj);
+            await dbService.collection("IpLists").add(IpaddrObj);
         }
 
 
@@ -151,7 +158,8 @@ const Home = () => {
             notebookManufacturer: "",
             yearOfNotebookManufacture: "",
             NotebookModelName: "",
-            NotebookCode: ""
+            NotebookCode: "",
+            ipaddr: ""
         });
     };
 

@@ -106,6 +106,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     <MenuItem value={"Redstone"}>Redstone</MenuItem>
                     <MenuItem value={"Alpha"}>Alpha</MenuItem>
                     <MenuItem value={"LG"}>LG</MenuItem>
+                    <MenuItem value={"기타"}>기타</MenuItem>
                 </Select>
             </FormControl>
             <FormControl className={classes.textControl}>

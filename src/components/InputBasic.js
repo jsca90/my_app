@@ -48,6 +48,7 @@ const InputBasic = ({ onToggle, inputs }) => {
         monitorCode,
         desktopCode,
         user,
+        ipaddr,
     } = inputs;
     return (
         <>
@@ -115,6 +116,8 @@ const InputBasic = ({ onToggle, inputs }) => {
                     <MenuItem value={"Redstone"}>Redstone</MenuItem>
                     <MenuItem value={"Alpha"}>Alpha</MenuItem>
                     <MenuItem value={"LG"}>LG</MenuItem>
+                    <MenuItem value={"기타"}>기타</MenuItem>
+
                 </Select>
             </FormControl>
             <FormControl className={classes.formControl}>
@@ -172,6 +175,8 @@ const InputBasic = ({ onToggle, inputs }) => {
                     <MenuItem value={"Redstone"}>Redstone</MenuItem>
                     <MenuItem value={"Alpha"}>Alpha</MenuItem>
                     <MenuItem value={"LG"}>LG</MenuItem>
+                    <MenuItem value={"기타"}>기타</MenuItem>
+
                 </Select>
             </FormControl>
             <FormControl className={classes.textControl}>
@@ -226,6 +231,19 @@ const InputBasic = ({ onToggle, inputs }) => {
                     <MenuItem value={"32"}>32</MenuItem>
 
                 </Select>
+            </FormControl>
+            <FormControl className={classes.textControl}>
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    label="IP주소"
+                    name="ipaddr"
+
+                    value={ipaddr}
+                    onChange={onToggle}
+                />
             </FormControl>
             <FormControl className={classes.textControl}>
                 <TextField
