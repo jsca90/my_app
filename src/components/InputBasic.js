@@ -62,8 +62,9 @@ const InputBasic = ({ onToggle, inputs }) => {
                     <MenuItem value={"문화체육부"}>문화체육부</MenuItem>
                     <MenuItem value={"생활체육부"}>생활체육부</MenuItem>
                     <MenuItem value={"공원운영부"}>공원운영부</MenuItem>
-                    <MenuItem value={"교통환경부"}>교통환경부</MenuItem>
+                    <MenuItem value={"환경교통부"}>환경교통부</MenuItem>
                     <MenuItem value={"감사팀"}>감사팀</MenuItem>
+                    <MenuItem value={"본부"}>본부</MenuItem>
                 </Select>
             </FormControl>
             <FormControl className={classes.formControl}>

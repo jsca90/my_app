@@ -1,21 +1,21 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
+import { makeStyles } from "@material-ui/core/styles";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+import TextField from "@material-ui/core/TextField";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
 const useStyles = makeStyles((theme) => ({
     formControl: {
         // margin: theme.spacing(1),
-        minWidth: '100%',
+        minWidth: "100%",
         marginTop: theme.spacing(3),
     },
     textControl: {
-        minWidth: '100%',
+        minWidth: "100%",
         marginTop: theme.spacing(1),
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: "100%", // Fix IE 11 issue.
         marginTop: theme.spacing(1),
     },
     selectEmpty: {
@@ -23,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
     },
 }));
 const InputNotebook = ({ onToggle, inputs }) => {
@@ -43,7 +43,7 @@ const InputNotebook = ({ onToggle, inputs }) => {
     return (
         <>
             <FormControl className={classes.formControl}>
-                <InputLabel >부서명</InputLabel>
+                <InputLabel>부서명</InputLabel>
                 <Select
                     value={department}
                     onChange={onToggle}
@@ -54,12 +54,12 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     <MenuItem value={"문화체육부"}>문화체육부</MenuItem>
                     <MenuItem value={"생활체육부"}>생활체육부</MenuItem>
                     <MenuItem value={"공원운영부"}>공원운영부</MenuItem>
-                    <MenuItem value={"교통환경부"}>교통환경부</MenuItem>
+                    <MenuItem value={"환경교통부"}>환경교통부</MenuItem>
                     <MenuItem value={"감사팀"}>감사팀</MenuItem>
                 </Select>
             </FormControl>
             <FormControl className={classes.formControl}>
-                <InputLabel >팀명</InputLabel>
+                <InputLabel>팀명</InputLabel>
                 <Select
                     value={teamName}
                     onChange={onToggle}
@@ -71,7 +71,9 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     <MenuItem value={"인사총무팀"}>인사총무팀</MenuItem>
                     <MenuItem value={"재무회계팀"}>재무회계팀</MenuItem>
                     <MenuItem value={"축구센터팀"}>축구센터팀</MenuItem>
-                    <MenuItem value={"북부스포츠센터팀"}>북부스포츠센터팀</MenuItem>
+                    <MenuItem value={"북부스포츠센터팀"}>
+                        북부스포츠센터팀
+                    </MenuItem>
                     <MenuItem value={"자연공원팀"}>자연공원팀</MenuItem>
                     <MenuItem value={"업무시설팀"}>업무시설팀</MenuItem>
                     <MenuItem value={"주차관리팀"}>주차관리팀</MenuItem>
@@ -85,13 +87,12 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     fullWidth
                     label="사용위치"
                     name="locationOfUse"
-
                     value={locationOfUse}
                     onChange={onToggle}
                 />
             </FormControl>
             <FormControl className={classes.formControl}>
-                <InputLabel >노트북 제조사</InputLabel>
+                <InputLabel>노트북 제조사</InputLabel>
                 <Select
                     value={notebookManufacturer}
                     onChange={onToggle}
@@ -129,7 +130,6 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     fullWidth
                     label="노트북 제조년월"
                     name="yearOfNotebookManufacture"
-
                     value={yearOfNotebookManufacture}
                     onChange={onToggle}
                 />
@@ -142,7 +142,6 @@ const InputNotebook = ({ onToggle, inputs }) => {
                     fullWidth
                     label="노트북 코드명"
                     name="NotebookCode"
-
                     value={NotebookCode}
                     onChange={onToggle}
                 />
