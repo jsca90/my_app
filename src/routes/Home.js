@@ -2,24 +2,26 @@ import { useState } from "react";
 import { dbService } from "../fbase";
 import InputBasic from "../components/InputBasic";
 import InputNotebook from "../components/InputNotebook";
-import InputMonitor from '../components/InputMonitor';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
+import InputMonitor from "../components/InputMonitor";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import InputDesktop from "../components/InputDesktop";
+import InputIp from "../components/InputIp";
 
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
         // margin: theme.spacing(1),
-        minWidth: '100%',
+        minWidth: "100%",
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: "100%", // Fix IE 11 issue.
         marginTop: theme.spacing(1),
     },
     selectEmpty: {
@@ -27,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
@@ -57,7 +59,7 @@ const Home = () => {
         yearOfNotebookManufacture: "", //노트북 제조년월
         NotebookModelName: "", // 노트북 모델명
         NotebookCode: "", // 노트묵 코드명
-        ipaddr: "" //아이피 주소
+        ipaddr: "", //아이피 주소
     });
     const {
         user,
@@ -78,7 +80,7 @@ const Home = () => {
         yearOfNotebookManufacture,
         NotebookModelName,
         NotebookCode,
-        ipaddr
+        ipaddr,
     } = inputs;
 
     const onToggle = (e) => {
@@ -106,8 +108,8 @@ const Home = () => {
         const IpaddrObj = {
             user,
             locationOfUse,
-            ipaddr
-        }
+            ipaddr,
+        };
         const monitorObj = {
             kind: "모니터",
             user,
@@ -136,12 +138,15 @@ const Home = () => {
             await dbService.collection("Lists").add(notebookObj);
         } else if (kind === "모니터") {
             await dbService.collection("Lists").add(monitorObj);
+        } else if (kind === "데스크탑") {
+            await dbService.collection("Lists").add(desktopObj);
+        } else if (kind === "아이피") {
+            await dbService.collection("Lists").add(IpaddrObj);
         } else {
             await dbService.collection("Lists").add(monitorObj);
             await dbService.collection("Lists").add(desktopObj);
             await dbService.collection("IpLists").add(IpaddrObj);
         }
-
 
         setInputs({
             user: "",
@@ -162,17 +167,18 @@ const Home = () => {
             yearOfNotebookManufacture: "",
             NotebookModelName: "",
             NotebookCode: "",
-            ipaddr: ""
+            ipaddr: "",
         });
     };
 
     return (
-
-
         <Container maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
-                <form onSubmit={onSubmit} method="post" className={classes.form}>
+                <form
+                    onSubmit={onSubmit}
+                    method="post"
+                    className={classes.form}>
                     <FormControl className={classes.formControl}>
                         <InputLabel>구분</InputLabel>
                         <Select
@@ -180,32 +186,51 @@ const Home = () => {
                             autoFocus
                             onChange={onToggle}
                             name="kind"
-                            fullWidth
-                        >
+                            fullWidth>
                             <MenuItem value={""}>기본</MenuItem>
                             <MenuItem value={"모니터"}>모니터</MenuItem>
+                            <MenuItem value={"데스크탑"}>데스크탑</MenuItem>
                             <MenuItem value={"노트북"}>노트북</MenuItem>
+                            <MenuItem value={"아이피"}>아이피</MenuItem>
                         </Select>
                     </FormControl>
-                    {kind === "" ? (<InputBasic onToggle={onToggle} inputs={inputs} />) : ""}
-                    {kind === "모니터" ? (<InputMonitor onToggle={onToggle} inputs={inputs} />) : ""}
-                    {kind === "노트북" ? (<InputNotebook onToggle={onToggle} inputs={inputs} />) : ""}
+                    {kind === "" ? (
+                        <InputBasic onToggle={onToggle} inputs={inputs} />
+                    ) : (
+                        ""
+                    )}
+                    {kind === "모니터" ? (
+                        <InputMonitor onToggle={onToggle} inputs={inputs} />
+                    ) : (
+                        ""
+                    )}
+                    {kind === "데스크탑" ? (
+                        <InputDesktop onToggle={onToggle} inputs={inputs} />
+                    ) : (
+                        ""
+                    )}
+                    {kind === "노트북" ? (
+                        <InputNotebook onToggle={onToggle} inputs={inputs} />
+                    ) : (
+                        ""
+                    )}
+                    {kind === "아이피" ? (
+                        <InputIp onToggle={onToggle} inputs={inputs} />
+                    ) : (
+                        ""
+                    )}
 
-
-                    <Button type="submit"
+                    <Button
+                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"
-                        className={classes.submit}>Send Data</Button>
-
+                        className={classes.submit}>
+                        Send Data
+                    </Button>
                 </form>
             </div>
         </Container>
-
-
-
-
-
     );
 };
 

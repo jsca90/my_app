@@ -35,8 +35,6 @@ const useData = () => {
                 }));
                 setItems(item);
             });
-        console.log("렌더링 되었습니다.");
-
         return () => {
             setItems("");
         };
@@ -172,7 +170,6 @@ export default function List() {
 
     return (
         <>
-            <h1 align="center">IP 현황</h1> : <h4>{rows.length}</h4>
             <TableContainer component={Paper}>
                 <Table
                     className={classes.table}

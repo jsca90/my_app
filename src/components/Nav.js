@@ -39,22 +39,17 @@ const Nav = ({ userObj }) => {
             <Toolbar className={classes.toolbarSecondary}>
                 <Button size="medium" className={classes.toolbarLink}>
                     <Link to="/" className={classes.textLink}>
-                        Home
+                        입력
                     </Link>
                 </Button>
-                {userObj.email === "khs@cfmc.or.kr" ? (
-                    <Button size="medium" className={classes.toolbarLink}>
-                        <Link to="/List" className={classes.textLink}>
-                            List
-                        </Link>
-                    </Button>
-                ) : (
-                    ""
-                )}
-
+                <Button size="medium" className={classes.toolbarLink}>
+                    <Link to="/List" className={classes.textLink}>
+                        IP주소 확인
+                    </Link>
+                </Button>
                 <Button size="medium" className={classes.toolbarLink}>
                     <Link to="/newList" className={classes.textLink}>
-                        NewList
+                        전체 조회
                     </Link>
                 </Button>
                 <Button size="medium" className={classes.toolbarLink}>
@@ -62,7 +57,7 @@ const Nav = ({ userObj }) => {
                         to="/"
                         className={classes.textLink}
                         onClick={onLogOut}>
-                        Sign Out
+                        로그아웃
                     </Link>
                 </Button>
             </Toolbar>
