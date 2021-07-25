@@ -141,7 +141,7 @@ const Home = () => {
         } else if (kind === "데스크탑") {
             await dbService.collection("Lists").add(desktopObj);
         } else if (kind === "아이피") {
-            await dbService.collection("Lists").add(IpaddrObj);
+            await dbService.collection("IpLists").add(IpaddrObj);
         } else {
             await dbService.collection("Lists").add(monitorObj);
             await dbService.collection("Lists").add(desktopObj);
