@@ -26,7 +26,6 @@ const useData = () => {
     useEffect(() => {
         dbService
             .collection("IpLists")
-            .orderBy("user", "asc")
             .get()
             .then((res) => {
                 const item = res.docs.map((doc) => ({
@@ -186,9 +185,9 @@ export default function List() {
                     <TableBody>
                         {(rowsPerPage > 0
                             ? rows.slice(
-                                  page * rowsPerPage,
-                                  page * rowsPerPage + rowsPerPage
-                              )
+                                page * rowsPerPage,
+                                page * rowsPerPage + rowsPerPage
+                            )
                             : rows
                         ).map((row) => (
                             <TableRow key={row.id}>
