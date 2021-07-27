@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
+import {
+    DataGrid, GridToolbarContainer,
+    GridToolbarExport
+} from "@material-ui/data-grid";
 import { dbService } from "../fbase";
-import { makeStyles } from "@material-ui/core/styles";
 
 const useData = () => {
     const [items, setItems] = useState([]);
@@ -54,6 +56,14 @@ const columns = [
     },
 ];
 
+function CustomToolbar() {
+    return (
+        <GridToolbarContainer csvOptions={{ allColumns: true, utf8WithBom: true }} >
+            <GridToolbarExport />
+        </GridToolbarContainer>
+    );
+}
+
 export default function Data() {
     const rows = useData();
     const [pageSize, setPageSize] = useState(10);
@@ -73,6 +83,12 @@ export default function Data() {
                 rowsPerPageOptions={[10, 20, 30, 40, 50]}
                 pagination
                 autoHeight
+                getCellClassName={(params) => {
+                    params.colDef.align = "center"
+                }}
+                components={{
+                    Toolbar: CustomToolbar,
+                }}
             />
         </div>
     );
