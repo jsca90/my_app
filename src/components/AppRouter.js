@@ -4,7 +4,7 @@ import Home from "../routes/Home";
 // import Lists from "../routes/Lists";
 import Data from "../routes/Data";
 
-import NewListTable from "../routes/Newtable";
+import AllData from "../routes/AllData";
 
 import Nav from "./Nav";
 
@@ -23,7 +23,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                                 <Data />
                             </Route>
                             <Route path="/newList">
-                                <NewListTable />
+                                <AllData />
                             </Route>
                         </>
                     ) : (
