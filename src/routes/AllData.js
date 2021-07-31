@@ -52,8 +52,8 @@ const columns = [
         headerAlign: "center",
     },
     {
-        field: "teamName",
-        headerName: "팀명",
+        field: "locationOfUse",
+        headerName: "사용위치",
         // type: 'number',
         editable: false,
         flex: 1,
