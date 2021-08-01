@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-    DataGrid, GridToolbarContainer,
-    GridToolbarExport
-} from "@material-ui/data-grid";
+import { DataGrid } from "@material-ui/data-grid";
 import { dbService } from "../fbase";
+import { CSVLink } from "react-csv";
+import Button from "@material-ui/core/Button";
 
 const useData = () => {
     const [items, setItems] = useState([]);
@@ -49,20 +48,30 @@ const columns = [
     {
         field: "user",
         headerName: "사용자명",
-        // type: 'number',
         editable: false,
         flex: 1,
         headerAlign: "center",
     },
 ];
 
-function CustomToolbar() {
+const ExcelDownload = ({ rows, columns }) => {
+    const headers = [
+        { label: columns[1].headerName, key: columns[1].field },
+        { label: columns[2].headerName, key: columns[2].field },
+        { label: columns[3].headerName, key: columns[3].field },
+    ];
     return (
-        <GridToolbarContainer csvOptions={{ allColumns: true, utf8WithBom: true }} >
-            <GridToolbarExport />
-        </GridToolbarContainer>
+        <Button>
+            <CSVLink
+                data={rows}
+                headers={headers}
+                filename="ipaddr.csv"
+                target="_blank">
+                CSV 다운로드
+            </CSVLink>
+        </Button>
     );
-}
+};
 
 export default function Data() {
     const rows = useData();
@@ -75,6 +84,7 @@ export default function Data() {
             style={{
                 width: "100%",
             }}>
+            <ExcelDownload rows={rows} columns={columns} />
             <DataGrid
                 rows={rows}
                 columns={columns}
@@ -84,10 +94,7 @@ export default function Data() {
                 pagination
                 autoHeight
                 getCellClassName={(params) => {
-                    params.colDef.align = "center"
-                }}
-                components={{
-                    Toolbar: CustomToolbar,
+                    params.colDef.align = "center";
                 }}
             />
         </div>

@@ -46,7 +46,6 @@ const columns = [
     {
         field: "department",
         headerName: "부서명",
-        // type: 'number',
         editable: false,
         flex: 1,
         headerAlign: "center",
@@ -54,7 +53,6 @@ const columns = [
     {
         field: "locationOfUse",
         headerName: "사용위치",
-        // type: 'number',
         editable: false,
         flex: 1,
         headerAlign: "center",
@@ -62,7 +60,6 @@ const columns = [
     {
         field: "yearOfManufacture",
         headerName: "제조년월",
-        // type: 'number',
         editable: false,
         flex: 1,
         headerAlign: "center",
@@ -70,7 +67,6 @@ const columns = [
     {
         field: "Manufacturer",
         headerName: "제조사",
-        // type: 'number',
         editable: false,
         flex: 1,
         headerAlign: "center",
@@ -78,7 +74,6 @@ const columns = [
     {
         field: "ModelName",
         headerName: "모델명",
-        // type: 'number',
         editable: false,
         flex: 1,
         headerAlign: "center",
@@ -86,21 +81,11 @@ const columns = [
     {
         field: "user",
         headerName: "사용자",
-        // type: 'number',
         editable: false,
         flex: 1,
         headerAlign: "center",
     },
 ];
-
-// function CustomToolbar() {
-//     return (
-//         <GridToolbarContainer
-//             csvOptions={{ allColumns: true, utf8WithBom: true }}>
-//             <GridToolbarExport />
-//         </GridToolbarContainer>
-//     );
-// }
 
 export default function AllData() {
     const rows = useData();
@@ -124,9 +109,6 @@ export default function AllData() {
                 getCellClassName={(params) => {
                     params.colDef.align = "center";
                 }}
-                // components={{
-                //     Toolbar: CustomToolbar,
-                // }}
             />
         </div>
     );
