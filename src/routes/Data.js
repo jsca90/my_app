@@ -10,14 +10,17 @@ const useData = () => {
     useEffect(() => {
         dbService
             .collection("IpLists")
-            .get()
-            .then((res) => {
-                const item = res.docs.map((doc) => ({
+            .orderBy("user", "asc")
+            .onSnapshot((snapshot) => {
+                const item = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data(),
                 }));
                 setItems([...item]);
             });
+        return () => {
+            setItems("");
+        };
     }, []);
 
     return items;
@@ -75,7 +78,7 @@ const ExcelDownload = ({ rows, columns }) => {
 
 export default function Data() {
     const rows = useData();
-    const [pageSize, setPageSize] = useState(10);
+    const [pageSize, setPageSize] = useState(15);
     const handlePageSizeChange = (params) => {
         setPageSize(params.pageSize);
     };
@@ -90,7 +93,7 @@ export default function Data() {
                 columns={columns}
                 pageSize={pageSize}
                 onPageSizeChange={handlePageSizeChange}
-                rowsPerPageOptions={[10, 20, 30, 40, 50]}
+                rowsPerPageOptions={[15, 30, 45, 60, 75, 100]}
                 pagination
                 autoHeight
                 getCellClassName={(params) => {
