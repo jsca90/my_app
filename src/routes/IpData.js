@@ -37,23 +37,23 @@ const columns = [
     {
         field: "ipaddr",
         headerName: "아이피주소",
-        editable: false,
         headerAlign: "center",
         flex: 1,
+        editable: true,
     },
     {
         field: "locationOfUse",
         headerName: "사용 위치",
-        editable: false,
         headerAlign: "center",
         flex: 1,
+        editable: true,
     },
     {
         field: "user",
         headerName: "사용자명",
-        editable: false,
         flex: 1,
         headerAlign: "center",
+        editable: true,
     },
 ];
 
@@ -76,7 +76,7 @@ const ExcelDownload = ({ rows, columns }) => {
     );
 };
 
-export default function Data() {
+export default function IpData() {
     const rows = useData();
     const [pageSize, setPageSize] = useState(15);
     const handlePageSizeChange = (params) => {
@@ -99,6 +99,8 @@ export default function Data() {
                 getCellClassName={(params) => {
                     params.colDef.align = "center";
                 }}
+            // isCellEditable={(params) => console.log(params.row.id)}
+
             />
         </div>
     );

@@ -2,7 +2,7 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 // import Lists from "../routes/Lists";
-import Data from "../routes/Data";
+import IpData from "../routes/IpData";
 
 import AllData from "../routes/AllData";
 
@@ -20,7 +20,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
                                 <Home />
                             </Route>
                             <Route path="/List">
-                                <Data />
+                                <IpData />
                             </Route>
                             <Route path="/newList">
                                 <AllData />
