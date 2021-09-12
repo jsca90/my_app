@@ -42,11 +42,11 @@ const Nav = ({ userObj }) => {
                         입력
                     </Link>
                 </Button>
-                <Button size="medium" className={classes.toolbarLink}>
+                {/* <Button size="medium" className={classes.toolbarLink}>
                     <Link to="/List" className={classes.textLink}>
                         IP주소 확인
                     </Link>
-                </Button>
+                </Button> */}
                 <Button size="medium" className={classes.toolbarLink}>
                     <Link to="/newList" className={classes.textLink}>
                         전체 조회

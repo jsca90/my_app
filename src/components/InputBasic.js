@@ -46,7 +46,7 @@ const InputBasic = ({ onToggle, inputs }) => {
         monitorCode,
         desktopCode,
         user,
-        ipaddr,
+        // ipaddr,
     } = inputs;
     return (
         <>
@@ -224,7 +224,7 @@ const InputBasic = ({ onToggle, inputs }) => {
                     <MenuItem value={"32"}>32</MenuItem>
                 </Select>
             </FormControl>
-            <FormControl className={classes.textControl}>
+            {/* <FormControl className={classes.textControl}>
                 <TextField
                     variant="outlined"
                     margin="normal"
@@ -235,7 +235,7 @@ const InputBasic = ({ onToggle, inputs }) => {
                     value={ipaddr}
                     onChange={onToggle}
                 />
-            </FormControl>
+            </FormControl> */}
             <FormControl className={classes.textControl}>
                 <TextField
                     variant="outlined"

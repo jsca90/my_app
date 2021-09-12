@@ -59,7 +59,7 @@ const Home = () => {
         yearOfNotebookManufacture: "", //노트북 제조년월
         NotebookModelName: "", // 노트북 모델명
         NotebookCode: "", // 노트묵 코드명
-        ipaddr: "", //아이피 주소
+        // ipaddr: "", //아이피 주소
     });
     const {
         user,
@@ -80,7 +80,7 @@ const Home = () => {
         yearOfNotebookManufacture,
         NotebookModelName,
         NotebookCode,
-        ipaddr,
+        // ipaddr,
     } = inputs;
 
     const onToggle = (e) => {
@@ -105,11 +105,11 @@ const Home = () => {
             ModelName: desktopModelName.toUpperCase(),
             Code: desktopCode.toUpperCase(),
         };
-        const IpaddrObj = {
-            user,
-            locationOfUse,
-            ipaddr,
-        };
+        // const IpaddrObj = {
+        //     user,
+        //     locationOfUse,
+        //     ipaddr,
+        // };
         const monitorObj = {
             kind: "모니터",
             user,
@@ -140,12 +140,14 @@ const Home = () => {
             await dbService.collection("Lists").add(monitorObj);
         } else if (kind === "데스크탑") {
             await dbService.collection("Lists").add(desktopObj);
-        } else if (kind === "아이피") {
-            await dbService.collection("IpLists").add(IpaddrObj);
-        } else {
+        }
+        // else if (kind === "아이피") {
+        //     await dbService.collection("IpLists").add(IpaddrObj);
+        // }
+        else {
             await dbService.collection("Lists").add(monitorObj);
             await dbService.collection("Lists").add(desktopObj);
-            await dbService.collection("IpLists").add(IpaddrObj);
+            // await dbService.collection("IpLists").add(IpaddrObj);
         }
 
         setInputs({
@@ -167,7 +169,7 @@ const Home = () => {
             yearOfNotebookManufacture: "",
             NotebookModelName: "",
             NotebookCode: "",
-            ipaddr: "",
+            // ipaddr: "",
         });
     };
 
@@ -191,7 +193,7 @@ const Home = () => {
                             <MenuItem value={"모니터"}>모니터</MenuItem>
                             <MenuItem value={"데스크탑"}>데스크탑</MenuItem>
                             <MenuItem value={"노트북"}>노트북</MenuItem>
-                            <MenuItem value={"아이피"}>아이피</MenuItem>
+                            {/* <MenuItem value={"아이피"}>아이피</MenuItem> */}
                         </Select>
                     </FormControl>
                     {kind === "" ? (
@@ -214,11 +216,11 @@ const Home = () => {
                     ) : (
                         ""
                     )}
-                    {kind === "아이피" ? (
+                    {/* {kind === "아이피" ? (
                         <InputIp onToggle={onToggle} inputs={inputs} />
                     ) : (
                         ""
-                    )}
+                    )} */}
 
                     <Button
                         type="submit"
